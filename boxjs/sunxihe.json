@@ -14,13 +14,12 @@
             "settings":[
                 {
                     "id":"boxapp_testflight_app",
-                    "name":"应用编号",
+                    "name":"手机号",
                     "val":"",
                     "type":"textarea",
-                    "placeholder":"McBV96Wi,lNmLTx8d,ZfyeFB1S,srPJRks9,uEXBDwt2",
-                    "autoGrow":true,
+                    "placeholder":"11123232，12134233",
                     "rows":5,
-                    "desc":"以英文逗号分隔多个号码"
+                    "desc":"输入你的手机号"
                 }
             ],
             "author":"@sunxihe",
