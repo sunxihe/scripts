@@ -11,6 +11,18 @@
             "keys":[
                 "dxyck"
             ],
+            "settings":[
+                {
+                    "id":"boxapp_testflight_app",
+                    "name":"应用编号",
+                    "val":"",
+                    "type":"textarea",
+                    "placeholder":"McBV96Wi,lNmLTx8d,ZfyeFB1S,srPJRks9,uEXBDwt2",
+                    "autoGrow":true,
+                    "rows":5,
+                    "desc":"以英文逗号分隔多个号码"
+                }
+            ],
             "author":"@sunxihe",
             "repo":"https://github.com/sunxihe/scripts暂定",
             "script":"https://raw.githubusercontent.com/sunxihe/暂定",
