@@ -30,7 +30,7 @@ if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
     };
     $httpClient.post({
       url: url_flask,
-      body: body
+      body: data
     }, function(error, response, data) {
       if (error) {
         console.log(error);
