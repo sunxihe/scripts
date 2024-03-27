@@ -1,3 +1,5 @@
+const { json } = require("stream/consumers")
+
 const cookieName = '中国人保'
 
 const sxh = init()
@@ -34,12 +36,17 @@ if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
     }, function(error, response, data) {
       if (error) {
         console.log(error);
+        sxh.msg("程序发生错误",error)
+        sxh.done()
       } else {
-        sxh.msg("cookieName",response,data)
+        res = JSON.parse(data)
+        if (res.code == "200") {
+          sxh.msg(cookieName,"添加到本地数据库成功!","恭喜")
+        }
       }
     });
   }
-sxh.done()
+
 function init() {
     isSurge = () => {
       return undefined === this.$httpClient ? false : true
