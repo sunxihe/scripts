@@ -43,6 +43,7 @@ if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
         if (res.code == "200") {
           sxh.msg(cookieName,"添加到本地数据库成功!","恭喜")
         }
+        sxh.done()
       }
     });
   }
