@@ -1,14 +1,10 @@
-const { json } = require("stream/consumers")
-
 const cookieName = '中国人保'
-sxh.msg('抓取ck成功！','')
 const sxh = init()
 if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
-    sxh.msg('$request！','')
     const headers = JSON.stringify($request.headers)
     const headers_json = JSON.parse(headers)
     const token = headers_json["x-app-auth-token"]
-    if (token) sxh.msg(cookieName,'抓取ck成功！','')
+    if (token) sxh.msg(cookieName,'','抓取ck成功！')
     const url = "https://bark.sunxihe.cloud:2043/KErXXnNLJjKrbf4JNnk2aV";
     const url_flask = "http://192.168.2.133:5000/api/data";
     const body = {
@@ -26,7 +22,6 @@ if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
       }
     });
     //写入本地数据库通知
-    sxh.msg(cookieName,'写入本地数据库通','')
     const time = formatCurrentDate()
     const data = {
       "content": token,
@@ -43,7 +38,7 @@ if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
       } else {
         res = JSON.parse(data)
         if (res.code == "200") {
-          sxh.msg(cookieName,"添加到本地数据库成功!","恭喜")
+          sxh.msg(cookieName,"","添加到本地数据库成功!")
         }
         sxh.done()
       }
