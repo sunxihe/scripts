@@ -1,9 +1,10 @@
 const { json } = require("stream/consumers")
 
 const cookieName = '中国人保'
-
+sxh.msg('抓取ck成功！','')
 const sxh = init()
 if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
+    sxh.msg('$request！','')
     const headers = JSON.stringify($request.headers)
     const headers_json = JSON.parse(headers)
     const token = headers_json["x-app-auth-token"]
@@ -25,6 +26,7 @@ if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
       }
     });
     //写入本地数据库通知
+    sxh.msg(cookieName,'写入本地数据库通','')
     const time = formatCurrentDate()
     const data = {
       "content": token,
