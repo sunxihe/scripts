@@ -1,0 +1,34 @@
+{
+    "id":"sunxihe.app.sub",
+    "name":"sunxihe应用订阅",
+    "author":"@sunxihe",
+    "icon":"https://avatars3.githubusercontent.com/u/29748519?s=460&u=392a19e85465abbcb1791c9b8b32184a16e6795e&v=4",
+    "repo":"https://github.com/sunxihe/scripts",
+    "apps":[
+        {
+            "id":"1",
+            "name":"cookie存储",
+            "keys":[
+                "dxyck"
+            ],
+            "settings":[
+                {
+                    "id":"boxapp_testflight_app",
+                    "name":"手机号",
+                    "val":"",
+                    "type":"textarea",
+                    "placeholder":"11123232，12134233",
+                    "rows":5,
+                    "desc":"输入你的手机号"
+                }
+            ],
+            "author":"@sunxihe",
+            "repo":"https://github.com/sunxihe/scripts暂定",
+            "script":"https://raw.githubusercontent.com/sunxihe/暂定",
+            "icons":[
+                "https://raw.githubusercontent.com/Orz-3/mini/master/Alpha/10000.png",
+                "https://raw.githubusercontent.com/Orz-3/mini/master/Color/10000.png"
+            ]
+        }
+    ]
+}
