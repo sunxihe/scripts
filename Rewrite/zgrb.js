@@ -39,6 +39,8 @@ if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
         res = JSON.parse(data)
         if (res.code == "200") {
           sxh.msg(cookieName,"","添加到本地数据库成功!")
+        }else if(res.code == "203") {
+          sxh.msg(cookieName,"","数据库已存在该字段!")
         }
         sxh.done()
       }
