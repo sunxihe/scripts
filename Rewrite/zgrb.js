@@ -6,7 +6,7 @@ if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
     const token = headers_json["x-app-auth-token"]
     if (token) sxh.msg(cookieName,'','抓取ck成功！')
     const url = "https://bark.sunxihe.cloud:2043/KErXXnNLJjKrbf4JNnk2aV";
-    const url_flask = "http://192.168.2.133:5000/api/data";
+    const url_flask = "http://192.168.2.133:5000/writeck";
     const body = {
         body: token
     };
