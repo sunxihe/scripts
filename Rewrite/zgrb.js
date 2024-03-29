@@ -1,4 +1,5 @@
 const cookieName = '中国人保'
+console.log("xixixi");
 const sxh = init()
 if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
     const headers = JSON.stringify($request.headers)
