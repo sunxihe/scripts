@@ -1,13 +1,12 @@
 const cookieName = '中国人保'
-
 const sxh = init()
 if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
     const headers = JSON.stringify($request.headers)
     const headers_json = JSON.parse(headers)
     const token = headers_json["x-app-auth-token"]
-    if (token) sxh.msg(cookieName,'抓取ck成功！','')
+    if (token) sxh.msg(cookieName,'','抓取ck成功！')
     const url = "https://bark.sunxihe.cloud:2043/KErXXnNLJjKrbf4JNnk2aV";
-    const url_flask = "http://192.168.2.133:5000";
+    const url_flask = "http://192.168.2.133:5000/writeck";
     const body = {
         body: token
     };
@@ -26,7 +25,8 @@ if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
     const time = formatCurrentDate()
     const data = {
       "content": token,
-      "time" : time
+      "time" : time,
+        "table": "zhrb"
     };
     $httpClient.post({
       url: url_flask,
@@ -34,12 +34,20 @@ if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
     }, function(error, response, data) {
       if (error) {
         console.log(error);
+        sxh.msg("程序发生错误",error)
+        sxh.done()
       } else {
-        sxh.msg("cookieName",response,data)
+        res = JSON.parse(data)
+        if (res.code == "200") {
+          sxh.msg(cookieName,"","添加到本地数据库成功!")
+        }else if(res.code == "203") {
+          sxh.msg(cookieName,"","数据库已存在该字段!")
+        }
+        sxh.done()
       }
     });
   }
-sxh.done()
+
 function init() {
     isSurge = () => {
       return undefined === this.$httpClient ? false : true
