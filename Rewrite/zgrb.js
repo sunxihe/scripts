@@ -25,7 +25,7 @@ if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
     const time = formatCurrentDate()
     const data = {
       "content": token,
-      "time" : time
+      "time" : time,
         "table": "zhrb"
     };
     $httpClient.post({
