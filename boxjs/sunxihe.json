@@ -83,8 +83,8 @@
                 }
             ],
             "author":"@sunxihe",
-            "repo":"https://github.com/sunxihe/scripts暂定",
-            "script":"https://raw.githubusercontent.com/sunxihe/暂定",
+            "repo":"https://github.com/sunxihe/scripts/scripts",
+            "script":"https://raw.githubusercontent.com/sunxihe/scripts/master/scripts/test.js",
             "icons":[
                 "https://github.com/sunxihe/scripts/blob/master/icon/0013025625364286_b.jpg",
                 "https://github.com/sunxihe/scripts/blob/master/icon/0013025625364286_b.jpg"
