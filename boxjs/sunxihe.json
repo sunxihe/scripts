@@ -81,6 +81,14 @@
                     "rows": 1,
                     "desc": "数据库接口"
                 }
+                {
+                    "id": "datebase_table",
+                    "name": "数据库表名",
+                    "val": null,
+                    "type": "text",
+                    "rows": 1,
+                    "desc": "数据库接口"
+                }
             ],
             "author":"@sunxihe",
             "repo":"https://github.com/sunxihe/scripts/scripts",
