@@ -26,6 +26,7 @@ if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
     const data = {
       "content": token,
       "time" : time
+        "table": "zhrb"
     };
     $httpClient.post({
       url: url_flask,
