@@ -80,7 +80,7 @@
                     "type": "text",
                     "rows": 1,
                     "desc": "数据库接口"
-                }
+                },
                 {
                     "id": "datebase_table",
                     "name": "数据库表名",
@@ -97,6 +97,39 @@
                 "https://github.com/sunxihe/scripts/blob/master/icon/0013025625364286_b.jpg",
                 "https://github.com/sunxihe/scripts/blob/master/icon/0013025625364286_b.jpg"
             ]
+        },
+        {
+            "id":"sxh_mtz",
+            "name":"每天赚Cookie",
+            "keys": [
+                "ck1",
+                "ck2",
+                "ck3",
+                "ck4",
+                "ck5",
+                "ck6",
+                "ck7",
+                "ck8",
+                "ck9",
+                "ck10",
+                "ck11",
+                "ck12",
+                "ck13",
+                "ck14",
+                "ck15",
+                "ck16",
+                "ck17",
+                "ck18",
+                "ck19",
+                "ck20"
+              ],
+              "author": "@sunxihe",
+              "repo": "https://github.com/sunxihe/scripts/scripts",
+              "icons": [
+                "https://github.com/sunxihe/scripts/blob/master/icon/0013025625364286_b.jpg",
+                "https://github.com/sunxihe/scripts/blob/master/icon/0013025625364286_b.jpg"
+              ],
+              "script": "https://raw.githubusercontent.com/Yuheng0101/X/main/Tasks/moyu.js"
         }
     ]
 }
