@@ -114,7 +114,7 @@ function init() {
       }
       if (isQuanX()) {
         url.method = 'GET'
-        $task.fetch(url).then((resp) => cb(null, {}, resp.body))
+        $task.fetch(url, cb).then((resp) => cb(null, {}, resp.body))
       }
     }
     post = (url, cb) => {
