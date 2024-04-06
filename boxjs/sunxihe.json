@@ -6,7 +6,7 @@
     "repo":"https://github.com/sunxihe/scripts",
     "apps":[
         {
-            "id":"1",
+            "id":"zgrb",
             "name":"中国人保",
             "keys":[
                 "zgrbck",
@@ -27,32 +27,25 @@
                 }
             ],
             "author":"@sunxihe",
-            "repo":"https://github.com/sunxihe/scripts暂定",
-            "script":"https://raw.githubusercontent.com/sunxihe/暂定",
+            "repo":"https://github.com/WowYiJiu/Personal/blob/main/Script/boxjs_to_ql.js",
+            "script":"https://raw.githubusercontent.com/WowYiJiu/Personal/main/Script/boxjs_to_ql.js",
             "icons":[
-                "https://raw.githubusercontent.com/Orz-3/mini/master/Alpha/10000.png",
-                "https://raw.githubusercontent.com/Orz-3/mini/master/Color/10000.png"
+                "https://raw.githubusercontent.com/sunxihe/scripts/master/icon/20240406231220.jpg",
+                "https://raw.githubusercontent.com/sunxihe/scripts/master/icon/20240406231220.jpg"
             ]
         },
         {
-            "id":"2",
-            "name":"青龙&bark&数据库地址",
+            "id":"Bark&Database",
+            "name":"Bark&数据库",
             "descs_html": [
-                "<p style='margin-top:20px;font-size:16px;color:#a29bfe;text-align:center;'>刷步格言: 每天刷一刷, 健康第一, 步数第二</p>",
-                "<p style='margin-left:10px;margin-top:30px;font-size:20px;font-weight:900;'>如需配置多账号务必看完以下说明<p>",
-                "<p style='margin-left:10px;margin-top:20px;font-size:12px;'>账密使用&&分割, 如果密码存在&&请先修改密码后再使用该脚本, 账密长度务必保持一致</p>",
-                "<p style='margin-left:10px;margin-top:20px;font-size:12px;'>区间和步数使用&进行分割, 如果不分割使用第一个作为统一配置, 如10000-19999, 即表示不管多少账号都使用这一区间, 如果使用多账号区间, 务必长度与账密保持一致</p>",
-                "<p style='margin-left:10px;margin-top:20px;font-size:12px;'>步数与区间规则一致, 使用多账号区间, 务必长度与账密保持一致</p>",
-                "<p style='margin-left:10px;margin-top:20px;color:#3498db;'>账号举例: 手机号1&&手机号2&&... (密码亦是如此)</p>",
-                "<p style='margin-left:10px;margin-top:20px;color:#3498db;'>区间举例: 1000-2000&1500-2000&...(注意长度与账密保持一致, 步数亦是如此)</p>",
-                "<p style='margin-left:10px;margin-top:20px;font-size:16px;color:#ff0000;'>步数优先级高于区间, 填写步数后区间作用将失效, 建议填写区间</p>",
-                "<p style='margin-left:10px;margin-top:20px;font-size:16px;color:#ff0000;'>步数不要超过50000</p>"
+                "<p style='margin-top:20px;font-size:16px;color:#a29bfe;text-align:center;'>开心玩耍!</p>"
               ],
             "keys":[
                 "bark_switch",
                 "database_switch",
                 "bark_address",
-                "datebase_address"
+                "datebase_address",
+                "datebase_table"
             ],
             "settings":[
                 {
@@ -98,8 +91,8 @@
             "repo":"https://github.com/sunxihe/scripts/scripts",
             "script":"https://raw.githubusercontent.com/sunxihe/scripts/master/scripts/test.js",
             "icons":[
-                "https://github.com/sunxihe/scripts/blob/master/icon/0013025625364286_b.jpg",
-                "https://github.com/sunxihe/scripts/blob/master/icon/0013025625364286_b.jpg"
+                "https://raw.githubusercontent.com/sunxihe/scripts/master/icon/0013025625364286_b.jpg",
+                "https://raw.githubusercontent.com/sunxihe/scripts/master/icon/0013025625364286_b.jpg"
             ]
         }
     ]
