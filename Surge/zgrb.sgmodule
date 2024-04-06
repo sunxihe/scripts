@@ -1,0 +1,8 @@
+#!desc=iOS Cookies 模块配置
+#!system=ios
+
+[Script]
+Rewrite: 中国人保 = type=http-request,pattern=^https:\/\/mp.picclife.cn\/dop\/scoremall\/user\/userinfo\/appUserLoginInfo,script-path=https://raw.githubusercontent.com/sunxihe/scripts/master/Rewrite/zgrb.js
+
+[MITM]
+hostname = %INSERT%, mp.picclife.cn
