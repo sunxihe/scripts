@@ -1,53 +1,81 @@
 const cookieName = '中国人保'
-console.log("xixixi");
 const sxh = init()
+
+const bark_switch = sxh.getdata('bark_switch')
+const bark_address = sxh.getdata('bark_address')
+const database_switch = sxh.getdata('database_switch')
+const zgrb_time = sxh.getdata('zgrb_time') !== null ? sxh.getdata('zgrb_time') : '1970/01/01';
+const now_time = formatCurrentDate()
+
 if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
     const headers = JSON.stringify($request.headers)
     const headers_json = JSON.parse(headers)
     const token = headers_json["x-app-auth-token"]
-    if (token) sxh.msg(cookieName,'','抓取ck成功！')
-    const url = "https://bark.sunxihe.cloud:2043/KErXXnNLJjKrbf4JNnk2aV";
-    const url_flask = "http://192.168.2.133:5000/writeck";
-    const body = {
-        body: token
-    };
-    //bark通知
-    $httpClient.post({
-      url: url,
-      body: body
-    }, function(error, response, data) {
-      if (error) {
-        console.log(error);
-      } else {
-        console.log(data);
+    if (token) {
+      sxh.msg(cookieName,'','抓取ck成功！')
+      if (bark_switch) {
+        const url = bark_address;
+        const body = {
+          body: token
+        };
+        //bark通知
+        sxh.post({
+          url: url,
+          body: body
+        }, function(error, response, data) {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log(data);
+          }
+        });
       }
-    });
-    //写入本地数据库通知
-    const time = formatCurrentDate()
-    const data = {
-      "content": token,
-      "time" : time,
-        "table": "zhrb"
-    };
-    $httpClient.post({
-      url: url_flask,
-      body: data
-    }, function(error, response, data) {
-      if (error) {
-        console.log(error);
-        sxh.msg("程序发生错误",error)
-        sxh.done()
-      } else {
-        res = JSON.parse(data)
-        if (res.code == "200") {
-          sxh.msg(cookieName,"","添加到本地数据库成功!")
-        }else if(res.code == "203") {
-          sxh.msg(cookieName,"","数据库已存在该字段!")
-        }
-        sxh.done()
+      if (database_switch) {
+        const datebase_address = sxh.getdata('datebase_address')
+        const datebase_table = sxh.getdata('datebase_table')
+        //写入本地数据库通知
+        const data = {
+          "content": token,
+          "time" : now_time,
+          "table": datebase_table
+          };
+        sxh.post({
+          url: datebase_address,
+          body: data
+        }, function(error, response, data) {
+          if (error) {
+            console.log(error);
+            sxh.msg("程序发生错误",error)
+            sxh.done()
+          } else {
+            res = JSON.parse(data)
+            if (res.code == "200") {
+              sxh.msg(cookieName,"","添加到本地数据库成功!")
+            }else if(res.code == "203") {
+              sxh.msg(cookieName,"","数据库已存在该字段!")
+            }
+            sxh.done()
+          }
+        });
       }
-    });
+      // 将另一个日期字符串转换为 Date 对象
+      var time1 = new Date(zgrb_time);
+      var time2 = new Date(now_time);
+      // 比较两个日期的大小
+      if (time2 > time1) {
+        sxh.setdata("","zgrbck")
+        sxh.setdata(now_time,"zgrb_time")
+      } else {
+        console.log("不做处理");
+      }
+      const zgrbck = sxh.getdata("zgrbck")
+      sxh.setdata(zgrbck+"\n"+token,"zgrbck")
+      sxh.setdata(now_time,"zgrb_time")
+    }
+
   }
+
+
 
 function init() {
     isSurge = () => {
