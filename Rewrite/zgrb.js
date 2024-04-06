@@ -7,13 +7,12 @@ const zgrb_time = sxh.getdata('zgrb_time') !== null ? sxh.getdata('zgrb_time') :
 const now_time = formatCurrentDate()
 
 if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
-    sxh.msg(cookieName,'','1111111')
     const headers = JSON.stringify($request.headers)
     const headers_json = JSON.parse(headers)
     const token = headers_json["x-app-auth-token"]
     if (token) {
       sxh.msg(cookieName,'','抓取ck成功！')
-      if (bark_switch) {
+      if (bark_switch == "true") {
         const bark_address = sxh.getdata('bark_address')
         if (!bark_address) {
           sxh.msg(cookieName,'','Bark地址未填写!请在boxjs中配置！')
@@ -34,7 +33,7 @@ if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
           }
         });
       }
-      if (database_switch) {
+      if (database_switch  == "true") {
         const datebase_address = sxh.getdata('datebase_address')
         const datebase_table = sxh.getdata('datebase_table')
         if (!datebase_address && datebase_table) {
