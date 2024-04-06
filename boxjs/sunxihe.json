@@ -8,6 +8,9 @@
         {
             "id":"zgrb",
             "name":"中国人保",
+            "descs_html": [
+                "<p style='margin-top:20px;font-size:16px;color:#a29bfe;text-align:center;'>配置完青龙 抓取ck完毕后点击右上角运行按钮即可同步ck</p>"
+              ],
             "keys":[
                 "zgrbck",
                 "zgrb_time"
