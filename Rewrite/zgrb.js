@@ -7,7 +7,7 @@ if (sxh.getdata('zgrb_time') == "") {
     sxh.setdata("1970/01/01", 'zgrb_time');
 }
 zgrb_time = sxh.getdata('zgrb_time');
-
+console.log(zgrb_time);
 const now_time = formatCurrentDate()
 
 if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
