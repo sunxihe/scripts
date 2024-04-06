@@ -3,7 +3,12 @@ const sxh = init()
 
 const bark_switch = sxh.getdata('bark_switch')
 const database_switch = sxh.getdata('database_switch')
-const zgrb_time = sxh.getdata('zgrb_time') !== null ? sxh.getdata('zgrb_time') : '1970/01/01';
+let zgrb_time;
+if (sxh.getdata('zgrb_time') == "(null)") {
+    sxh.setdata("1970/01/01", 'zgrb_time');
+} else {
+    zgrb_time = sxh.getdata('zgrb_time');
+}
 const now_time = formatCurrentDate()
 
 if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
