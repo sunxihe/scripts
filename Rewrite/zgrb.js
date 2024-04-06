@@ -15,6 +15,7 @@ if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
     const headers_json = JSON.parse(headers)
     const token = headers_json["x-app-auth-token"]
     if (token) {
+      console.log(token);
       sxh.msg(cookieName,'','抓取ck成功！')
       if (bark_switch == "true") {
         const bark_address = sxh.getdata('bark_address')
