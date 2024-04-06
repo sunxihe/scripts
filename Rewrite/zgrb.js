@@ -7,6 +7,7 @@ const zgrb_time = sxh.getdata('zgrb_time') !== null ? sxh.getdata('zgrb_time') :
 const now_time = formatCurrentDate()
 
 if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
+    sxh.msg(cookieName,'','1111111')
     const headers = JSON.stringify($request.headers)
     const headers_json = JSON.parse(headers)
     const token = headers_json["x-app-auth-token"]
@@ -75,10 +76,9 @@ if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
         console.log("不做处理");
       }
       const zgrbck = sxh.getdata("zgrbck")
-      sxh.setdata(zgrbck+"\n"+token,"zgrbck")
-      sxh.setdata(now_time,"zgrb_time")
-      sxh.done()
+      zgrbck == "" ? sxh.setdata(token,"zgrbck") : sxh.setdata(zgrbck+"\n"+token,"zgrbck")
     }
+    sxh.done()
 
   }
 
