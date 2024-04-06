@@ -2,7 +2,6 @@ const cookieName = '中国人保'
 const sxh = init()
 
 const bark_switch = sxh.getdata('bark_switch')
-const bark_address = sxh.getdata('bark_address')
 const database_switch = sxh.getdata('database_switch')
 const zgrb_time = sxh.getdata('zgrb_time') !== null ? sxh.getdata('zgrb_time') : '1970/01/01';
 const now_time = formatCurrentDate()
@@ -14,6 +13,10 @@ if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
     if (token) {
       sxh.msg(cookieName,'','抓取ck成功！')
       if (bark_switch) {
+        const bark_address = sxh.getdata('bark_address')
+        if (!bark_address) {
+          sxh.msg(cookieName,'','Bark地址未填写!请在boxjs中配置！')
+        }
         const url = bark_address;
         const body = {
           body: token
@@ -33,6 +36,9 @@ if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
       if (database_switch) {
         const datebase_address = sxh.getdata('datebase_address')
         const datebase_table = sxh.getdata('datebase_table')
+        if (!datebase_address && datebase_table) {
+          sxh.msg(cookieName,'','数据库信息未配置!请在boxjs中配置！')
+        }
         //写入本地数据库通知
         const data = {
           "content": token,
@@ -71,6 +77,7 @@ if ($request  && $request.url.indexOf('appUserLoginInfo') >= 0) {
       const zgrbck = sxh.getdata("zgrbck")
       sxh.setdata(zgrbck+"\n"+token,"zgrbck")
       sxh.setdata(now_time,"zgrb_time")
+      sxh.done()
     }
 
   }
