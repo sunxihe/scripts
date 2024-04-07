@@ -11,7 +11,6 @@ $.ql = {
 			headers: this.headers,
 			body: JSON.stringify(ids),
 		};
-        $.log(opt);
         return $.http.put(opt).then((response) => JSON.parse(response.body));
     },
 	disabled(ids) {

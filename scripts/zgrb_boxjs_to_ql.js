@@ -86,7 +86,7 @@ async function getScriptUrl() {
     }
 
     if ($.read("runTask_Switch") == "true") {
-        $.log( `开始!`);
+        $.log( `开始运行任务!`);
         let arr = [];
         const taskId = $.read("task_id")
         arr[0] = parseInt(taskId);
