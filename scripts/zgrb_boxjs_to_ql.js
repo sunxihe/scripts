@@ -89,11 +89,12 @@ async function getScriptUrl() {
         return $.notify(title, `已同步${notifyMsg.length}条`, notifyMsg.join(`\n`));
     }
     if ($.read("runTask_Switch") == "true") {
+        $.log( `开始!`);
         let arr = [];
         const taskId = $.read("task_id")
         arr[0] = taskId
-        $.ql.runTask(arr[0])
-        return $.notify(title, `已运行任务ID${taskId}任务`, notifyMsg.join(`\n`));
+        await $.ql.runTask(arr[0])
+        $.log(`已运行任务ID${taskId}任务`);
     }
 })()
     .catch((e) => $.error(e))
