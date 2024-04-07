@@ -11,7 +11,7 @@ $.ql = {
         const opt = {
 			url: `${$.ql_url}/${this.type}/open/crons/run`,
 			headers: this.headers,
-			body: JSON.stringify(ids),
+			body: ids,
 		};
         $.log(opt);
         return $.http.put(opt).then((response) => JSON.parse(response.body));
