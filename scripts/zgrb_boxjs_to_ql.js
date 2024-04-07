@@ -84,13 +84,13 @@ async function getScriptUrl() {
     if (res.code === 200) {
         $.log(`同步环境变量成功`);
     }
-    
+
     if ($.read("runTask_Switch") == "true") {
         $.log( `开始!`);
         let arr = [];
         const taskId = $.read("task_id")
-        arr[0] = taskId
-        await $.ql.runTask(arr[0])
+        arr[0] = parseInt(taskId);
+        await $.ql.runTask(arr)
         $.log(`已运行任务ID${taskId}任务`);
     }
 })()
