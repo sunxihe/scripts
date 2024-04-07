@@ -9,7 +9,7 @@ $.ql = {
         $.log("啊啊啊啊啊啊啊");
         if (!this.headers.Authorization) return;
         const opt = {
-			url: `${$.ql_url}/${this.type}/open/crons/run`,
+			url: `${$.ql_url}/${this.type}/crons/run`,
 			headers: this.headers,
 			body: JSON.stringify(ids),
 		};
