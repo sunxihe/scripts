@@ -5,6 +5,7 @@ $.ql = {
 		Authorization: "",
 	},
     runTask(ids){
+        $.log(`开始执行任务`);
         if (!this.headers.Authorization) return;
         const opt = {
 			url: `${$.ql_url}/${this.type}/open/crons/run`,
