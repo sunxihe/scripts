@@ -51,7 +51,7 @@ syncEnvs.forEach((item) => {
 
 async function getScriptUrl() {
     const opt = {
-        url: `https://raw.githubusercontent.com/WowYiJiu/Personal/main/Script/ql_api.js`
+        url: `https://raw.githubusercontent.com/sunxihe/scripts/master/scripts/ql_api.js`
     };
     return $.http.get(opt).then((response) => response.body);
 }
@@ -87,6 +87,12 @@ async function getScriptUrl() {
     
     if ($.read("mute") !== "true") {
         return $.notify(title, `已同步${notifyMsg.length}条`, notifyMsg.join(`\n`));
+    }
+    if ($.read("runTask_Switch") == "true") {
+        let arr = [];
+        const taskId = $.read("task_id")
+        arr[0] = taskId
+        $.ql.runTask(arr[0])
     }
 })()
     .catch((e) => $.error(e))

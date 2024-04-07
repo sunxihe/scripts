@@ -12,10 +12,25 @@
                 "<p style='margin-top:20px;font-size:16px;color:#a29bfe;text-align:center;'>开心玩耍!</p>"
               ],
             "keys":[
+                "@ql.runTask_Switch",
                 "zgrbck",
-                "zgrb_time"
+                "zgrb_time",
+                "@ql.task_id"
             ],
             "settings":[
+                {
+                    "id": "@ql.runTask_Switch",
+                    "name": "是否开启自动运行",
+                    "val": false,
+                    "type": "boolean",
+                    "desc": "会自动执行任务"
+                },
+                {
+                    "id": "@ql.task_id",
+                    "name": "青龙任务ID",
+                    "desc": "请填写中国人保的任务ID",
+                    "val": null
+                },
                 {
                     "id": "zgrbck",
                     "name": "中国人保CK",
@@ -28,6 +43,7 @@
                     "id": "zgrb_time",
                     "val": "2023/05/15"
                 }
+
             ],
             "author":"@sunxihe",
             "repo":"https://github.com/WowYiJiu/Personal/blob/main/Script/boxjs_to_ql.js",
