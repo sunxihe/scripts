@@ -5,13 +5,14 @@ $.ql = {
 		Authorization: "",
 	},
     runTask(ids){
-        $.log(`开始执行任务`);
+        $.log(ids);
         if (!this.headers.Authorization) return;
         const opt = {
 			url: `${$.ql_url}/${this.type}/open/crons/run`,
 			headers: this.headers,
 			body: JSON.stringify(ids),
 		};
+        $.log(opt);
         return $.http.put(opt).then((response) => JSON.parse(response.body));
     },
 	disabled(ids) {
