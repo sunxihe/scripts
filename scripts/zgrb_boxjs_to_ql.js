@@ -93,6 +93,7 @@ async function getScriptUrl() {
         const taskId = $.read("task_id")
         arr[0] = taskId
         $.ql.runTask(arr[0])
+        return $.notify(title, `已运行任务ID${taskId}任务`, notifyMsg.join(`\n`));
     }
 })()
     .catch((e) => $.error(e))
