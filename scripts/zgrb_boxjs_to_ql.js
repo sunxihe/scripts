@@ -85,9 +85,6 @@ async function getScriptUrl() {
         $.log(`同步环境变量成功`);
     }
     
-    if ($.read("mute") !== "true") {
-        return $.notify(title, `已同步${notifyMsg.length}条`, notifyMsg.join(`\n`));
-    }
     if ($.read("runTask_Switch") == "true") {
         $.log( `开始!`);
         let arr = [];
