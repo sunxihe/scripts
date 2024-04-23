@@ -6,4 +6,4 @@
 Timecard = script-name=yunshi,update-interval=3600
 
 [Script]
-yunshi = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/smartmimi/conf/master/surge/timecard.js
+yunshi = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/sunxihe/scripts/master/scripts/yunshi.js
