@@ -349,36 +349,38 @@ function Env(name) {
     
         },
     ];
-    // !(async () => {
-    //
-    //     await XiaoMaoFunction();
-    // })()
-    //
-    //     .catch((err) => {
-    //
-    //         $XiaoMaoInfo.log(err);
-    //
-    //         setTimeout(() => {
-    //
-    //
-    //             $XiaoMaoInfo.done();
-    //
-    //         }, 3000);
-    //
-    //     })
-    //
-    //     .finally(() => {
-    //
-    //         console.log(appName + "星座运势数据获取成功");
-    //
-    //         setTimeout(() => {
-    //
-    //
-    //             $XiaoMaoInfo.done();
-    //
-    //         }, 5000);
-    //
-    //     });
+    !(async () => {
+    
+        const result =await XiaoMaoFunction();
+    })()
+    
+        .catch((err) => {
+    
+            $XiaoMaoInfo.log(err);
+    
+            setTimeout(() => {
+    
+    
+                $XiaoMaoInfo.done();
+    
+            }, 3000);
+    
+        })
+    
+        .finally(() => {
+    
+            console.log(appName + "星座运势数据获取成功");
+    
+            setTimeout(() => {
+                    $done({
+                        title:"孙西河的今日运势🍩",
+                        icon:"star",
+                        content:result
+                    })
+    
+            }, 5000);
+    
+        });
     
     function XiaoMaoFunction() {
     
@@ -810,7 +812,7 @@ function Env(name) {
                                             }
     
     
-                                            return resultText;
+                                            return  resultText;
     
     
                                         }
@@ -860,9 +862,8 @@ function Env(name) {
         );
     }
     
-    $done({
-        title:"孙西河的今日运势🍩",
-        icon:"star",
-        content:XiaoMaoFunction()
-        })
+    setTimeout(() => {
+    
+        $done({});
+    }, 2000);
       
