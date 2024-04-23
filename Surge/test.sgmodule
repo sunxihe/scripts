@@ -1,6 +1,7 @@
 #!name=星座运势
 #!desc=显示星座运势的信息
 #!system=ios
+#!category=Sunxihe
 
 [Panel]
 Timecard = script-name=yunshi,update-interval=3600
