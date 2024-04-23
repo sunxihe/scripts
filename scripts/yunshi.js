@@ -349,505 +349,7 @@ function Env(name) {
     
         },
     ];
-    !(async () => {
     
-        const result =await XiaoMaoFunction();
-    })()
-    
-        .catch((err) => {
-    
-            $XiaoMaoInfo.log(err);
-    
-            setTimeout(() => {
-    
-    
-                $XiaoMaoInfo.done();
-    
-            }, 3000);
-    
-        })
-    
-        .finally(() => {
-    
-            console.log(appName + "星座运势数据获取成功");
-    
-            setTimeout(() => {
-                    $done({
-                        title:"孙西河的今日运势🍩",
-                        icon:"star",
-                        content:result
-                    })
-    
-            }, 5000);
-    
-        });
-    
-    function XiaoMaoFunction() {
-    
-        if (
-    
-            $XiaoMaoInfo.read("HoroscopeList") &&
-    
-            $XiaoMaoInfo.read("HoroscopeTime")
-    
-        ) {
-    
-            XiaoMaoHoroscopeList = $XiaoMaoInfo.read("HoroscopeList").split("+");
-    
-            XiaoMaoHoroscopeTimeList = $XiaoMaoInfo.read("HoroscopeTime").split("+");
-    
-            console.log(XiaoMaoHoroscopeList);
-    
-            console.log(XiaoMaoHoroscopeTimeList);
-    
-            if (XiaoMaoHoroscopeList.length && XiaoMaoHoroscopeTimeList.length) {
-    
-    
-                XiaoMaoHoroscopeList.forEach((type) => {
-    
-    
-                    XiaoMaoHoroscopeTimeList.forEach((time) => {
-    
-    
-                        let typeObj = typeList.find((e) => e.type == type);
-    
-    
-                        let timeObj = timeList.find((e) => e.type == time);
-    
-    
-                        let timeObjName = timeObj.name.slice(0, 2);
-    
-    
-                        if (typeObj && timeObj) {
-    
-    
-                            let option = {
-    
-    
-                                url: encodeURI(
-                                    "https://api.vvhan.com/api/horoscope?type=" +
-    
-    
-                                    typeObj.params +
-    
-    
-                                    "&time=" +
-    
-    
-                                    timeObj.params
-                                ),
-    
-    
-                                method: "GET",
-    
-    
-                                headers: {
-    
-    
-                                    "User-Agent":
-    
-    
-                                        "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36",
-    
-    
-                                },
-    
-    
-                            };
-    
-    
-                            $XiaoMaoInfo
-    
-    
-                                .get(option, function (error, response, data) {
-    
-    
-                                    if (error) {
-    
-    
-                                        getError(typeObj.name + "_error_1");
-    
-    
-                                    } else {
-    
-    
-                                        let obj = JSON.parse(data);
-    
-    
-                                        if (obj.success) {
-    
-    
-                                            console.log("杀杀杀哈哈哈哈");
-    
-    
-                                            let resultText =
-    
-    
-                                                typeObj.name +
-    
-    
-                                                "- " +
-    
-    
-                                                obj.data.type +
-    
-    
-                                                "（" +
-    
-    
-                                                obj.data.time +
-    
-    
-                                                "）" +
-    
-    
-                                                "\n\n";
-    
-    
-                                            if (obj.data.hasOwnProperty("todo")) {
-    
-    
-                                                resultText =
-    
-    
-                                                    resultText +
-    
-    
-                                                    timeObjName +
-    
-    
-                                                    "吉凶宜忌：" +
-    
-    
-                                                    "\n" +
-    
-    
-                                                    "✅适宜动作：" +
-    
-    
-                                                    (obj.data.todo.yi || "- ") +
-    
-    
-                                                    "\n" +
-    
-    
-                                                    "❎忌讳动作：" +
-    
-    
-                                                    (obj.data.todo.ji || "- ") +
-    
-    
-                                                    "\n" +
-    
-    
-                                                    "🔢幸运数字：" +
-    
-    
-                                                    (obj.data.luckynumber || "- ") +
-    
-    
-                                                    "\n" +
-    
-    
-                                                    "🎨幸运颜色：" +
-    
-    
-                                                    (obj.data.luckycolor || "- ") +
-    
-    
-                                                    "\n" +
-    
-    
-                                                    "❤️速配星座：" +
-    
-    
-                                                    (obj.data.luckyconstellation || "- ") +
-    
-    
-                                                    "\n" +
-    
-    
-                                                    "💔提防星座：" +
-    
-    
-                                                    (obj.data.badconstellation || "- ") +
-    
-    
-                                                    "\n" +
-    
-    
-                                                    "💮运势短评：" +
-    
-    
-                                                    (obj.data.shortcomment || "- ") +
-    
-    
-                                                    "\n\n";
-    
-    
-                                            }
-    
-    
-                                            if (obj.data.hasOwnProperty("fortune")) {
-    
-    
-                                                let starIndex = "🌟🌟🌟🌟🌟";
-    
-    
-                                                resultText =
-    
-    
-                                                    resultText +
-    
-    
-                                                    timeObjName +
-    
-    
-                                                    "运势：" +
-    
-    
-                                                    "\n" +
-    
-    
-                                                    "🈴综合运势：" +
-    
-    
-                                                    starIndex.slice(0, 2 * parseInt(obj.data.fortune.all)) +
-    
-    
-                                                    "\n" +
-    
-    
-                                                    "💞爱情运势：" +
-    
-    
-                                                    starIndex.slice(0, 2 * parseInt(obj.data.fortune.love)) +
-    
-    
-                                                    "\n" +
-    
-    
-                                                    "📖事业运势：" +
-    
-    
-                                                    starIndex.slice(0, 2 * parseInt(obj.data.fortune.work)) +
-    
-    
-                                                    "\n" +
-    
-    
-                                                    "💰财富运势：" +
-    
-    
-                                                    starIndex.slice(0, 2 * parseInt(obj.data.fortune.money)) +
-    
-    
-                                                    "\n" +
-    
-    
-                                                    "💪健康运势：" +
-    
-    
-                                                    starIndex.slice(
-                                                        0,
-    
-    
-                                                        2 * parseInt(obj.data.fortune.health)
-                                                    ) +
-    
-    
-                                                    "\n\n";
-    
-    
-                                            }
-    
-    
-                                            if (obj.data.hasOwnProperty("index")) {
-    
-    
-                                                resultText =
-    
-    
-                                                    resultText +
-    
-    
-                                                    timeObjName +
-    
-    
-                                                    "指数：" +
-    
-    
-                                                    "\n" +
-    
-    
-                                                    "🈴综合运势：" +
-    
-    
-                                                    obj.data.index.all +
-    
-    
-                                                    "\n" +
-    
-    
-                                                    "💞爱情运势：" +
-    
-    
-                                                    obj.data.index.love +
-    
-    
-                                                    "\n" +
-    
-    
-                                                    "📖事业运势：" +
-    
-    
-                                                    obj.data.index.work +
-    
-    
-                                                    "\n" +
-    
-    
-                                                    "💰财富运势：" +
-    
-    
-                                                    obj.data.index.money +
-    
-    
-                                                    "\n" +
-    
-    
-                                                    "💪健康运势：" +
-    
-    
-                                                    obj.data.index.health +
-    
-    
-                                                    "\n\n";
-    
-    
-                                            }
-    
-    
-                                            if (obj.data.hasOwnProperty("fortunetext")) {
-    
-    
-                                                resultText =
-    
-    
-                                                    resultText +
-    
-    
-                                                    timeObjName +
-    
-    
-                                                    "运势解析：" +
-    
-    
-                                                    "\n" +
-    
-    
-                                                    "🈴综合运势：" +
-    
-    
-                                                    obj.data.fortunetext.all +
-    
-    
-                                                    "\n" +
-    
-    
-                                                    "💞爱情运势：" +
-    
-    
-                                                    obj.data.fortunetext.love +
-    
-    
-                                                    "\n" +
-    
-    
-                                                    "📖事业运势：" +
-    
-    
-                                                    obj.data.fortunetext.work +
-    
-    
-                                                    "\n" +
-    
-    
-                                                    "💰财富运势：" +
-    
-    
-                                                    obj.data.fortunetext.money +
-    
-    
-                                                    "\n" +
-    
-    
-                                                    "💪健康运势：" +
-    
-    
-                                                    obj.data.fortunetext.health +
-    
-    
-                                                    "\n" +
-    
-    
-                                                    "😮‍💨解压秘诀：" +
-    
-    
-                                                    (obj.data.fortunetext.decompression || "- ") +
-    
-    
-                                                    "\n" +
-    
-    
-                                                    "😄开运秘诀：" +
-    
-    
-                                                    (obj.data.fortunetext.openluck || "- ") +
-    
-    
-                                                    "\n\n";
-    
-    
-                                            }
-    
-    
-                                            return  resultText;
-    
-    
-                                        }
-    
-    
-                                    }
-    
-    
-                                })
-    
-    
-                        }
-    
-    
-                    });
-    
-    
-                });
-    
-            }
-    
-        } else {
-    
-            $XiaoMaoInfo.notify(
-                appName,
-    
-    
-                "🚦数据获取失败❗️",
-    
-    
-                "🚧星座默认参数未正确填写或获取失败，请前往XiaoMaoBoxJS填写！https://raw.githubusercontent.com/xiaomaoJT/QxScript/main/rewrite/boxJS/XiaoMaoHoroscope.js"
-            );
-    
-        }
-    }
     
     function getError(params) {
     
@@ -861,9 +363,173 @@ function Env(name) {
             "https://i.pixiv.re/img-original/img/2022/04/21/04/04/09/97769134_p0.png"
         );
     }
+
+    function XiaoMaoFunction(HoroscopeList, HoroscopeTime) {
+        const XiaoMaoHoroscopeList = HoroscopeList.split("+");
+        const XiaoMaoHoroscopeTimeList = HoroscopeTime.split("+");
+        var resultText = "";
+        if (XiaoMaoHoroscopeList.length && XiaoMaoHoroscopeTimeList.length) {
+            const resultTexts = [];
+        
+            XiaoMaoHoroscopeList.forEach((type) => {
+                XiaoMaoHoroscopeTimeList.forEach((time) => {
+                    const typeObj = typeList.find((e) => e.type == type);
+                    const timeObj = timeList.find((e) => e.type == time);
+                    const timeObjName = timeObj.name.slice(0, 2);
+        
+                    if (typeObj && timeObj) {
+                        const option = {
+                            url: encodeURI(
+                                "https://api.vvhan.com/api/horoscope?type=" +
+                                typeObj.params +
+                                "&time=" +
+                                timeObj.params
+                            ),
+                            method: "GET",
+                            headers: {
+                                "User-Agent":
+                                    "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36",
+                            },
+                        };
+        
+                        $XiaoMaoInfo.get(option, function (error, response, data) {
+                            if (error) {
+                                getError(typeObj.name + "_error_1");
+                            } else {
+                                const obj = JSON.parse(data);
+                                if (obj.success) {
+                                    let resultText =
+                                        typeObj.name +
+                                        "- " +
+                                        obj.data.type +
+                                        "（" +
+                                        obj.data.time +
+                                        "）" +
+                                        "\n\n";
+                                    if (obj.data.hasOwnProperty("todo")) {
+                                        resultText +=
+                                            timeObjName +
+                                            "吉凶宜忌：" +
+                                            "\n" +
+                                            "✅适宜动作：" +
+                                            (obj.data.todo.yi || "- ") +
+                                            "\n" +
+                                            "❎忌讳动作：" +
+                                            (obj.data.todo.ji || "- ") +
+                                            "\n" +
+                                            "🔢幸运数字：" +
+                                            (obj.data.luckynumber || "- ") +
+                                            "\n" +
+                                            "🎨幸运颜色：" +
+                                            (obj.data.luckycolor || "- ") +
+                                            "\n" +
+                                            "❤️速配星座：" +
+                                            (obj.data.luckyconstellation || "- ") +
+                                            "\n" +
+                                            "💔提防星座：" +
+                                            (obj.data.badconstellation || "- ") +
+                                            "\n" +
+                                            "💮运势短评：" +
+                                            (obj.data.shortcomment || "- ") +
+                                            "\n\n";
+                                    }
+                                    if (obj.data.hasOwnProperty("fortune")) {
+                                        const starIndex = "🌟🌟🌟🌟🌟";
+                                        resultText +=
+                                            timeObjName +
+                                            "运势：" +
+                                            "\n" +
+                                            "🈴综合运势：" +
+                                            starIndex.slice(0, 2 * parseInt(obj.data.fortune.all)) +
+                                            "\n" +
+                                            "💞爱情运势：" +
+                                            starIndex.slice(0, 2 * parseInt(obj.data.fortune.love)) +
+                                            "\n" +
+                                            "📖事业运势：" +
+                                            starIndex.slice(0, 2 * parseInt(obj.data.fortune.work)) +
+                                            "\n" +
+                                            "💰财富运势：" +
+                                            starIndex.slice(0, 2 * parseInt(obj.data.fortune.money)) +
+                                            "\n" +
+                                            "💪健康运势：" +
+                                            starIndex.slice(0, 2 * parseInt(obj.data.fortune.health)) +
+                                            "\n\n";
+                                    }
+                                    if (obj.data.hasOwnProperty("index")) {
+                                        resultText +=
+                                            timeObjName +
+                                            "指数：" +
+                                            "\n" +
+                                            "🈴综合运势：" +
+                                            obj.data.index.all +
+                                            "\n" +
+                                            "💞爱情运势：" +
+                                            obj.data.index.love +
+                                            "\n" +
+                                            "📖事业运势：" +
+                                            obj.data.index.work +
+                                            "\n" +
+                                            "💰财富运势：" +
+                                            obj.data.index.money +
+                                            "\n" +
+                                            "💪健康运势：" +
+                                            obj.data.index.health +
+                                            "\n\n";
+                                    }
+                                    if (obj.data.hasOwnProperty("fortunetext")) {
+                                        resultText +=
+                                            timeObjName +
+                                            "运势解析：" +
+                                            "\n" +
+                                            "🈴综合运势：" +
+                                            obj.data.fortunetext.all +
+                                            "\n" +
+                                            "💞爱情运势：" +
+                                            obj.data.fortunetext.love +
+                                            "\n" +
+                                            "📖事业运势：" +
+                                            obj.data.fortunetext.work +
+                                            "\n" +
+                                            "💰财富运势：" +
+                                            obj.data.fortunetext.money +
+                                            "\n" +
+                                            "💪健康运势：" +
+                                            obj.data.fortunetext.health +
+                                            "\n" +
+                                            "😮‍💨解压秘诀：" +
+                                            (obj.data.fortunetext.decompression || "- ") +
+                                            "\n" +
+                                            "😄开运秘诀：" +
+                                            (obj.data.fortunetext.openluck || "- ") +
+                                            "\n\n";
+                                    }
+                                    $done({
+                                        title:"孙西河今日运势",
+                                        icon:"star",
+                                        content:resultText
+                                        })
+                                }
+                            }
+                        });
+                    }
+                });
+            });
+            console.log(resultText);
+            return resultText
+        } else {
+            return "星座默认参数未正确填写或获取失败，请前往 XiaoMaoBoxJS 填写！https://raw.githubusercontent.com/xiaomaoJT/QxScript/main/rewrite/boxJS/XiaoMaoHoroscope.js";
+        }
+    }
+    
+    const HoroscopeList = "shuangyu";
+    const HoroscopeTime = "D";
+    
+    const result = XiaoMaoFunction(HoroscopeList, HoroscopeTime);
+    console.log("bbb",result);
+    
     
     setTimeout(() => {
-    
+        console.log("aaa",result); // 在这里打印结果可以保证数据已经获取
         $done({});
     }, 2000);
       
