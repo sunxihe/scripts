@@ -134,6 +134,33 @@
                 "https://raw.githubusercontent.com/sunxihe/scripts/master/icon/0013025625364286_b.jpg",
                 "https://raw.githubusercontent.com/sunxihe/scripts/master/icon/0013025625364286_b.jpg"
             ]
+        },
+        {
+            "id":"other",
+            "name":"其他设置",
+            "descs_html": [
+                "<p style='margin-top:20px;font-size:16px;color:#a29bfe;text-align:center;'>开心玩耍!</p>"
+              ],
+            "keys":[
+                "TaiPingTong"
+
+            ],
+            "settings":[
+                {
+                    "id": "TaiPingTong",
+                    "name": "太平通ck",
+                    "desc": "请填写太平通ck",
+                    "val": null
+                }
+
+            ],
+            "author":"@sunxihe",
+            "repo":"https://github.com/xzxxn777/Surge/blob/main/Script/TaiPingTong/TaiPingTong.js",
+            "script":"https://raw.githubusercontent.com/xzxxn777/Surge/main/Script/TaiPingTong/TaiPingTong.js",
+            "icons":[
+                "https://raw.githubusercontent.com/sunxihe/scripts/master/icon/20240406231220.jpg",
+                "https://raw.githubusercontent.com/sunxihe/scripts/master/icon/20240406231220.jpg"
+            ]
         }
     ]
 }
