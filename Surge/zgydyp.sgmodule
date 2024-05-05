@@ -1,0 +1,9 @@
+#!desc=iOS Cookies 模块配置
+#!system=ios
+
+[Script]
+Rewrite: 中国移动云盘token = type=http-response,pattern=^https:\/\/aas.caiyun.feixin.10086.cn\/tellin\/authTokenRefresh.do,script-path=https://raw.githubusercontent.com/sunxihe/scripts/master/Rewrite/zgydyp.js
+Rewrite: 中国移动云盘Auth = type=http-request,pattern=^https:\/\/aas.caiyun.feixin.10086.cn\/tellin\/querySpecToken.do,script-path=https://raw.githubusercontent.com/sunxihe/scripts/master/Rewrite/zgydyp.js
+
+[MITM]
+hostname = %INSERT%, aas.caiyun.feixin.10086.cn

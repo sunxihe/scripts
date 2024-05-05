@@ -142,14 +142,20 @@
                 "<p style='margin-top:20px;font-size:16px;color:#a29bfe;text-align:center;'>开心玩耍!</p>"
               ],
             "keys":[
-                "TaiPingTong"
-
+                "TaiPingTong",
+                "zgydyp"
             ],
             "settings":[
                 {
                     "id": "TaiPingTong",
                     "name": "太平通ck",
                     "desc": "请填写太平通ck",
+                    "val": null
+                }
+                {
+                    "id": "zgydyp",
+                    "name": "中国移动云盘ck",
+                    "desc": "请填写中国移动云盘ck",
                     "val": null
                 }
 
