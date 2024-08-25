@@ -63,6 +63,7 @@ async function getZgrbAppCookie() {
         await getZgrbAppCookie();
     } else {
         $.logger.error(`没有进来`);
+        $.notification.post(cookieName, '', 'B没进来')
     }
     $.done();
 })();
