@@ -1,0 +1,8 @@
+#!desc=iOS Cookies 模块配置
+#!system=ios
+
+[Script]
+Rewrite: 荷叶健康 = type=http-request,pattern=^https:\/\/tuan.api.ybm100.com\/api\/wechat\/auth\/subscribe/sysConfig,script-path=https://raw.githubusercontent.com/sunxihe/scripts/master/Rewrite/hyjk.js
+
+[MITM]
+hostname = %INSERT%, mp.picclife.cn
