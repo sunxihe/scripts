@@ -157,6 +157,12 @@
                     "name": "中国移动云盘ck",
                     "desc": "请填写中国移动云盘ck",
                     "val": null
+                },
+                {
+                    "id": "wyydcdck",
+                    "name": "网易有道词典ck",
+                    "desc": "请填写网易有道词典ck",
+                    "val": null
                 }
 
             ],
