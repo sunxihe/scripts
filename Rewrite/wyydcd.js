@@ -10,7 +10,7 @@ async function getZgrbAppCookie() {
     try {
         const headers = JSON.stringify($.request.headers)
         const headers_json = JSON.parse(headers)
-        const token = headers_json["x-app-auth-token"]
+        const token = headers_json["Cookie"]
         if (token) {
             $.notification.post(cookieName, "", "抓取成功")
             if ($.data.read(barkSwitch)) {
