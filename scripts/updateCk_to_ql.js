@@ -23,7 +23,7 @@ $.getval = (t) => ($.env.isQX ? $prefs.valueForKey(t) : $persistentStore.read(t)
 $.getdata=(t)=>{const lodash_get=(t,s="",e)=>s.split(/[(d+)]/g,".$1").split(".").reduce((res,key)=>res?.[key],t)||e;let s=$.getval(t);if(/^@/.test(t)){const[,e,i]=/^@(.*?).(.*?)$/.exec(t);const r=e?$.getval(e):"";if(r){try{const t=JSON.parse(r);s=t?lodash_get(t,i,""):s}catch(error){s=""}}}return s};
 
 const syncData = {};
-const task_id = '';
+let task_id = '';
 let envsData = envKeys.split('\n');
 var syncEnvs = [];
 for (var i = 0; i < envsData.length; i++) {
