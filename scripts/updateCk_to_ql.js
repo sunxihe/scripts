@@ -23,11 +23,13 @@ $.getval = (t) => ($.env.isQX ? $prefs.valueForKey(t) : $persistentStore.read(t)
 $.getdata=(t)=>{const lodash_get=(t,s="",e)=>s.split(/[(d+)]/g,".$1").split(".").reduce((res,key)=>res?.[key],t)||e;let s=$.getval(t);if(/^@/.test(t)){const[,e,i]=/^@(.*?).(.*?)$/.exec(t);const r=e?$.getval(e):"";if(r){try{const t=JSON.parse(r);s=t?lodash_get(t,i,""):s}catch(error){s=""}}}return s};
 
 const syncData = {};
+const task_id = '';
 let envsData = envKeys.split('\n');
 var syncEnvs = [];
 for (var i = 0; i < envsData.length; i++) {
     var parts = envsData[i].split('#');
-    var obj = { 'BoxJsKey': parts[0], 'qlEnv': parts[1], 'qlRemark': parts[2] };
+    var obj = { 'BoxJsKey': parts[0], 'qlEnv': parts[1], 'qlRemark': parts[2]};
+    task_id = parts[3]
     syncEnvs.push(obj);
 }
 function validate(value, pattern) {
@@ -87,7 +89,7 @@ async function getScriptUrl() {
     if ($.read("runTask_Switch") == "true") {
         $.log( `开始运行任务!`);
         let arr = [];
-        const taskId = $.read("task_id")
+        const taskId = task_id
         arr[0] = parseInt(taskId);
         await $.ql.runTask(arr)
         $.log(`已运行任务ID${taskId}任务`);
