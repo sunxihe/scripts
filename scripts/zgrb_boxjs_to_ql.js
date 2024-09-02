@@ -29,21 +29,19 @@ let task_id = '';
 let ql_url = ''
 let client_id = ''
 let client_secret = ''
-let envsData = envKeys.split('\n');
 var syncEnvs = [];
-for (var i = 0; i < envsData.length; i++) {
-    var parts = envsData[i].split('#');
-    if (parts.length >= 7) { // 确保有足够的部分
-        var obj = { 'BoxJsKey': parts[0], 'qlEnv': parts[1], 'qlRemark': parts[2]};
-        task_id = parts[3]; // 运行任务的id
-        ql_url = parts[4]; // 青龙的url
-        client_id = parts[5]; // 青龙client_id
-        client_secret = parts[6]; // 青龙client_secret
-        syncEnvs.push(obj);
-    } else {
-        console.log(`第${i+1}行数据格式不正确: ${envsData[i]}`);
-    }
+var parts = envKeys.split('#');
+if (parts.length >= 7) { // 确保有足够的部分
+    var obj = { 'BoxJsKey': parts[0], 'qlEnv': parts[1], 'qlRemark': parts[2]};
+    task_id = parts[3]; // 运行任务的id
+    ql_url = parts[4]; // 青龙的url
+    client_id = parts[5]; // 青龙client_id
+    client_secret = parts[6]; // 青龙client_secret
+    syncEnvs.push(obj);
+} else {
+    console.log(`第${i+1}行数据格式不正确`);
 }
+
 console.log("task_id",task_id);
 console.log("ql_url",ql_url);
 console.log("client_id",client_id);
