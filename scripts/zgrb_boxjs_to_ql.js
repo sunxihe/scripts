@@ -17,18 +17,25 @@ const $ = new API("ql", true);
 
 const title = "🐉 通知提示";
 const notifyMsg = [];
-let envKeys = "zgrbck#zgrbck#中国人保"
-
+let envKeys =  $argument;
 $.getval = (t) => ($.env.isQX ? $prefs.valueForKey(t) : $persistentStore.read(t));
 
 $.getdata=(t)=>{const lodash_get=(t,s="",e)=>s.split(/[(d+)]/g,".$1").split(".").reduce((res,key)=>res?.[key],t)||e;let s=$.getval(t);if(/^@/.test(t)){const[,e,i]=/^@(.*?).(.*?)$/.exec(t);const r=e?$.getval(e):"";if(r){try{const t=JSON.parse(r);s=t?lodash_get(t,i,""):s}catch(error){s=""}}}return s};
 
 const syncData = {};
+let task_id = '';
+let ql_url = ''
+let client_id = ''
+let client_secret = ''
 let envsData = envKeys.split('\n');
 var syncEnvs = [];
 for (var i = 0; i < envsData.length; i++) {
     var parts = envsData[i].split('#');
-    var obj = { 'BoxJsKey': parts[0], 'qlEnv': parts[1], 'qlRemark': parts[2] };
+    var obj = { 'BoxJsKey': parts[0], 'qlEnv': parts[1], 'qlRemark': parts[2]};
+    task_id = parts[3] //运行任务的id
+    ql_url = parts[4] //青龙的url
+    client_id = parts[5] //青龙client_id
+    client_secret = parts[6] //青龙client_secret
     syncEnvs.push(obj);
 }
 function validate(value, pattern) {
@@ -88,7 +95,7 @@ async function getScriptUrl() {
     if ($.read("runTask_Switch") == "true") {
         $.log( `开始运行任务!`);
         let arr = [];
-        const taskId = $.read("task_id")
+        const taskId = task_id
         arr[0] = parseInt(taskId);
         await $.ql.runTask(arr)
         $.log(`已运行任务ID${taskId}任务`);
