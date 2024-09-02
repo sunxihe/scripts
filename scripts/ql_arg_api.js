@@ -1,5 +1,3 @@
-
-
 $.ql = {
 	type: "api",
 	headers: {
@@ -69,25 +67,29 @@ $.ql = {
 		return $.http.get(opt).then((response) => JSON.parse(response.body));
 	},
 	initial: () => {
-        console.log(6);
-		$.ql_url = ql_url;
+        console.log($.ql_config);
+		$.ql_url = $.ql_config.ip;
 		if ($.ql_url && !$.ql_url.match(/^(http|https)/))
 			$.ql_url = `http://${$.ql_url}`;
-        console.log(ql_url);
-        console.log(client_id);
+
 		$.application = {
-			client_id: client_id,
-			client_secret: client_secret,
+			client_id: $.ql_config.client_id,
+			client_secret: $.ql_config.client_secret,
 		};
 
 		$.ql_account = {
-			username: "",
-			password: "",
+			username: $.ql_config.username,
+			password: $.ql_config.password,
 		};
 	},
 };
 
 
+$.ql_config = {
+    ip:ql_url,
+    client_id:client_id,
+    client_secret:client_secret
+};
 
 $.ql.initial();
 
