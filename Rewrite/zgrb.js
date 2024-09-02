@@ -66,8 +66,10 @@ async function getZgrbAppCookie() {
             } else {
                 console.log("不做处理");
             }
-            const zgrbck = $.data.read("zgrbck")
+            let zgrbck = $.data.read("zgrbck")
+            console.log(zgrbck);
             let arr = zgrbck.split("\n")
+            console.log(arr);
             if (!arr.includes(newString)) {
                 arr.push(newString); // 如果没有重复，添加到数组中
                 $.data.write("zgrbck", arr.join("\n")); // 将数组重新组合成字符串并保存回 zgrbck
