@@ -104,7 +104,7 @@ async function getScriptUrl() {
         $.log(`已运行任务ID${taskId}任务`);
     }
     $.log(`开始清空boxjs环境变量${parts[0]}`);
-    $.write("",parts[0])
+    $.write("","#"+parts[0])
 })()
     .catch((e) => $.error(e))
     .finally(() => $.done());
