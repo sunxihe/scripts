@@ -72,6 +72,10 @@ async function getZgrbAppCookie() {
             console.log(arr);
             if (!arr.includes(token)) {
                 arr.push(token); // 如果没有重复，添加到数组中
+                if(arr.length>11){
+                    arr.splice(0, 2);
+                    //console.log("arr",arr); // 输出: [3, 4, 5]
+                  }
                 $.data.write("zgrbck", arr.join("\n")); // 将数组重新组合成字符串并保存回 zgrbck
             } else {
                 console.log("字符串已存在，未添加。"); // 如果字符串已存在，输出提示
