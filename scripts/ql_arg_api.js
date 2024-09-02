@@ -69,10 +69,12 @@ $.ql = {
 		return $.http.get(opt).then((response) => JSON.parse(response.body));
 	},
 	initial: () => {
+        console.log(6);
 		$.ql_url = ql_url;
 		if ($.ql_url && !$.ql_url.match(/^(http|https)/))
 			$.ql_url = `http://${$.ql_url}`;
-
+        console.log(ql_url);
+        console.log(client_id);
 		$.application = {
 			client_id: client_id,
 			client_secret: client_secret,

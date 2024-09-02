@@ -76,6 +76,7 @@ async function getScriptUrl() {
 }
 
 !(async () => {
+    console.log(5);
     const qlData = Object.values(syncData);
     if (!qlData.length) return $.notify(title, "同步失败", "环境变量不能为空");
 
