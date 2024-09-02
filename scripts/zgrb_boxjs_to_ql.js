@@ -31,8 +31,6 @@ let client_id = ''
 let client_secret = ''
 var syncEnvs = [];
 var parts = envKeys.split('#');
-console.log(parts);
-console.log(1);
 if (parts.length >= 7) { // 确保有足够的部分
     var obj = { 'BoxJsKey': parts[0], 'qlEnv': parts[1], 'qlRemark': parts[2]};
     task_id = parts[3]; // 运行任务的id
@@ -43,17 +41,10 @@ if (parts.length >= 7) { // 确保有足够的部分
 } else {
     console.log(`第行数据格式不正确`);
 }
-console.log(2);
-console.log(task_id);
-console.log(ql_url);
-console.log(client_id);
-console.log(client_secret);
-console.log(3);
 function validate(value, pattern) {
     var re = new RegExp(pattern);
     return re.test(value);
 }
-console.log(4);
 syncEnvs.forEach((item) => {
     if (!validate(item.qlEnv, '^[a-zA-Z_][0-9a-zA-Z_]*$')) {
     return $.error(`${item.qlRemark}：${item.qlEnv}环境变量名格式不正确, 本次不同步`);
@@ -76,7 +67,6 @@ async function getScriptUrl() {
 }
 
 !(async () => {
-    console.log(5);
     const qlData = Object.values(syncData);
     if (!qlData.length) return $.notify(title, "同步失败", "环境变量不能为空");
 
