@@ -67,7 +67,14 @@ async function getZgrbAppCookie() {
                 console.log("不做处理");
             }
             const zgrbck = $.data.read("zgrbck")
-            zgrbck == "" ? $.data.write("zgrbck", token) : $.data.write("zgrbck", zgrbck + "\n" + token)
+            let arr = zgrbck.split("\n")
+            if (!arr.includes(newString)) {
+                arr.push(newString); // 如果没有重复，添加到数组中
+                $.data.write("zgrbck", arr.join("\n")); // 将数组重新组合成字符串并保存回 zgrbck
+            } else {
+                console.log("字符串已存在，未添加。"); // 如果字符串已存在，输出提示
+            }
+            //zgrbck == "" ? $.data.write("zgrbck", token) : $.data.write("zgrbck", zgrbck + "\n" + token)
         }
     } catch (err) {
         $.logger.error(`获取中国人保Cookies出现异常，${err}`);
