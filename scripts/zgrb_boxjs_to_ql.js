@@ -44,10 +44,10 @@ if (parts.length >= 7) { // 确保有足够的部分
     console.log(`第${i+1}行数据格式不正确`);
 }
 
-console.log("task_id",task_id);
-console.log("ql_url",ql_url);
-console.log("client_id",client_id);
-console.log("client_secret",client_secret);
+console.log("task_id",parts[3]);
+console.log("ql_url",parts[4]);
+console.log("client_id",parts[5]);
+console.log("client_secret",parts[6]);
 function validate(value, pattern) {
     var re = new RegExp(pattern);
     return re.test(value);
