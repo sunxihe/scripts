@@ -58,7 +58,7 @@ syncEnvs.forEach((item) => {
 
 async function getScriptUrl() {
     const opt = {
-        url: `https://raw.githubusercontent.com/sunxihe/scripts/master/scripts/ql_api.js`
+        url: `https://raw.githubusercontent.com/sunxihe/scripts/master/scripts/ql_arg_api.js`
     };
     return $.http.get(opt).then((response) => response.body);
 }
