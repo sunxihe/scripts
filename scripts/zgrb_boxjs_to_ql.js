@@ -31,6 +31,8 @@ let client_id = ''
 let client_secret = ''
 var syncEnvs = [];
 var parts = envKeys.split('#');
+console.log(parts);
+
 if (parts.length >= 7) { // 确保有足够的部分
     var obj = { 'BoxJsKey': parts[0], 'qlEnv': parts[1], 'qlRemark': parts[2]};
     task_id = parts[3]; // 运行任务的id
