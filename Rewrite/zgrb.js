@@ -73,6 +73,7 @@ async function getZgrbAppCookie() {
                 $.data.write("zgrbck", arr.join("\n")); // 将数组重新组合成字符串并保存回 zgrbck
             } else {
                 console.log("字符串已存在，未添加。"); // 如果字符串已存在，输出提示
+                $.notification.post(cookieName, '', 'cookie已存在，未添加。')
             }
             //zgrbck == "" ? $.data.write("zgrbck", token) : $.data.write("zgrbck", zgrbck + "\n" + token)
         }
