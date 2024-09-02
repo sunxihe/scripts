@@ -32,7 +32,7 @@ let client_secret = ''
 var syncEnvs = [];
 var parts = envKeys.split('#');
 console.log(parts);
-
+console.log(1);
 if (parts.length >= 7) { // 确保有足够的部分
     var obj = { 'BoxJsKey': parts[0], 'qlEnv': parts[1], 'qlRemark': parts[2]};
     task_id = parts[3]; // 运行任务的id
@@ -41,17 +41,19 @@ if (parts.length >= 7) { // 确保有足够的部分
     client_secret = parts[6]; // 青龙client_secret
     syncEnvs.push(obj);
 } else {
-    console.log(`第${i+1}行数据格式不正确`);
+    console.log(`第行数据格式不正确`);
 }
-
-console.log("task_id",parts[3]);
-console.log("ql_url",parts[4]);
-console.log("client_id",parts[5]);
-console.log("client_secret",parts[6]);
+console.log(2);
+console.log(task_id);
+console.log(ql_url);
+console.log(client_id);
+console.log(client_secret);
+console.log(3);
 function validate(value, pattern) {
     var re = new RegExp(pattern);
     return re.test(value);
 }
+console.log(4);
 syncEnvs.forEach((item) => {
     if (!validate(item.qlEnv, '^[a-zA-Z_][0-9a-zA-Z_]*$')) {
     return $.error(`${item.qlRemark}：${item.qlEnv}环境变量名格式不正确, 本次不同步`);
