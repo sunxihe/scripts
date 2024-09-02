@@ -38,6 +38,10 @@ for (var i = 0; i < envsData.length; i++) {
     client_secret = parts[6] //青龙client_secret
     syncEnvs.push(obj);
 }
+console.log("task_id",task_id);
+console.log("ql_url",ql_url);
+console.log("client_id",client_id);
+console.log("client_secret",client_secret);
 function validate(value, pattern) {
     var re = new RegExp(pattern);
     return re.test(value);
