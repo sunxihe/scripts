@@ -18,6 +18,8 @@ const $ = new API("ql", true);
 const title = "🐉 通知提示";
 const notifyMsg = [];
 let envKeys =  $argument;
+console.log(envKeys);
+
 $.getval = (t) => ($.env.isQX ? $prefs.valueForKey(t) : $persistentStore.read(t));
 
 $.getdata=(t)=>{const lodash_get=(t,s="",e)=>s.split(/[(d+)]/g,".$1").split(".").reduce((res,key)=>res?.[key],t)||e;let s=$.getval(t);if(/^@/.test(t)){const[,e,i]=/^@(.*?).(.*?)$/.exec(t);const r=e?$.getval(e):"";if(r){try{const t=JSON.parse(r);s=t?lodash_get(t,i,""):s}catch(error){s=""}}}return s};
