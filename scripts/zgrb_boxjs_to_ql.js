@@ -38,6 +38,7 @@ if (parts.length >= 7) { // 确保有足够的部分
     client_id = parts[5]; // 青龙client_id
     client_secret = parts[6]; // 青龙client_secret
     syncEnvs.push(obj);
+    console.log(obj);
 } else {
     console.log(`第行数据格式不正确`);
 }
