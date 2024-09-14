@@ -68,7 +68,7 @@ async function getScriptUrl() {
 
 !(async () => {
     const qlData = Object.values(syncData);
-    $.info(qlData);
+    console.log(qlData);
     if (!qlData.length) return $.notify(title, "同步失败", "环境变量不能为空哥哥");
 
     const ql_script = (await getScriptUrl()) || "";
