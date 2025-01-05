@@ -6,12 +6,14 @@ const databaseSwitch = "database_switch";
 if ($.data.read("zippo_time") == "") {
     $.data.write('zippo_time', "1970/01/01");
 }
+$.notification.post(cookieName, "", "1")
 const zippo_time = $.data.read("zippo_time")
 const now_time = $.formatCurrentDate
 const $ = MagicJS(cookieName, "INFO");
-
+$.notification.post(cookieName, "", "2")
 async function getZgrbAppCookie() {
     try {
+        $.notification.post(cookieName, "", "3")
         const headers = JSON.stringify($.request.headers)
         const headers_json = JSON.parse(headers)
         const token = headers_json["Authorization"]
