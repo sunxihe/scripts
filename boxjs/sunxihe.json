@@ -54,6 +54,54 @@
             ]
         },
         {
+            "id":"zippo",
+            "name":"Zippo小程序",
+            "descs_html": [
+                "<p style='margin-top:20px;font-size:16px;color:#a29bfe;text-align:center;'>开心玩耍!</p>"
+              ],
+            "keys":[
+                "@ql.runTask_Switch_Zippo",
+                "zippoCk",
+                "zippo_time",
+                "@ql.task_id_Zippo"
+            ],
+            "settings":[
+                {
+                    "id": "@ql.runTask_Switch_Zippo",
+                    "name": "是否开启自动运行",
+                    "val": false,
+                    "type": "boolean",
+                    "desc": "会自动执行任务"
+                },
+                {
+                    "id": "@ql.task_id_Zippo",
+                    "name": "青龙任务ID",
+                    "desc": "请填写Zippo的任务ID",
+                    "val": null
+                },
+                {
+                    "id": "zippoCk",
+                    "name": "Zippo小程序CK",
+                    "val": null,
+                    "type": "text",
+                    "rows": 10,
+                    "desc": "Zippo小程序CK"
+                },
+                {
+                    "id": "zippo_time",
+                    "val": "2023/05/15"
+                }
+
+            ],
+            "author":"@sunxihe",
+            "repo":"https://github.com/WowYiJiu/Personal/blob/main/Script/boxjs_to_ql.js",
+            "script":"https://raw.githubusercontent.com/sunxihe/scripts/master/scripts/zgrb_boxjs_to_ql.js",
+            "icons":[
+                "https://raw.githubusercontent.com/sunxihe/scripts/master/icon/20240406231220.jpg",
+                "https://raw.githubusercontent.com/sunxihe/scripts/master/icon/20240406231220.jpg"
+            ]
+        },
+        {
             "id":"Bark&Database",
             "name":"Bark&数据库",
             "descs_html": [
