@@ -3,13 +3,13 @@ const cookieName = "Zippo小程序";
 // const AppGetCookieRegex = /^https?:\/\/mp\.picclife\.cn\/dop\/scoremall\/user\/userinfo\/appUserLoginInfo$/;
 const AppGetCookieRegex = /^https?:\/\/wx-center\.zippo\.com\.cn\/api\/users\/profile/;
 const databaseSwitch = "database_switch";
+const $ = MagicJS(cookieName, "INFO");
 if ($.data.read("zippo_time") == "") {
     $.data.write('zippo_time', "1970/01/01");
 }
 $.notification.post(cookieName, "", "1")
 const zippo_time = $.data.read("zippo_time")
 const now_time = $.formatCurrentDate
-const $ = MagicJS(cookieName, "INFO");
 $.notification.post(cookieName, "", "2")
 async function getZgrbAppCookie() {
     try {
