@@ -2,7 +2,7 @@
 #!system=ios
 
 [Script]
-𝐙𝐈𝐏𝐏𝐎会员中心获取Authorization = type=http-request, pattern=^https?:\/\/wx-center\.zippo\.com\.cn\/api\/users\/profile, script-path=https://raw.githubusercontent.com/sunxihe/scripts/refs/heads/master/Rewrite/zippo.js
+𝐙𝐈𝐏𝐏𝐎会员中心获取Authorization = type=http-request, pattern=^https?:\/\/wx-center\.zippo\.com\.cn\/api\/users\/profile, script-path=https://raw.githubusercontent.com/sunxihe/scripts/refs/heads/master/Rewrite/zippo.js, timeout=3600
 
 [MITM]
 hostname = %INSERT%, wx-center.zippo.com.cn
