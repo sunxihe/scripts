@@ -1,19 +1,21 @@
+const ckname = 'zippoCk'
+const cktime = 'zippo_time'
+
 const cookieName = "Zippo小程序";
-// const barkSwitch = "bark_switch";
-// const AppGetCookieRegex = /^https?:\/\/mp\.picclife\.cn\/dop\/scoremall\/user\/userinfo\/appUserLoginInfo$/;
+const barkSwitch = "bark_switch";  //bark开关
 const AppGetCookieRegex = /^https?:\/\/wx-center\.zippo\.com\.cn\/api\/users\/profile/;
 const databaseSwitch = "database_switch";
 const $ = MagicJS(cookieName, "INFO");
-if ($.data.read("zippo_time") == "") {
-    $.data.write('zippo_time', "1970/01/01");
+if ($.data.read(cktime) == "") {
+    $.data.write(cktime, "1970/01/01");
 }
-$.notification.post(cookieName, "", "1")
-const zippo_time = $.data.read("zippo_time")
+const zgrbTime = $.data.read(cktime)
 const now_time = $.formatCurrentDate
-$.notification.post(cookieName, "", "2")
+$.logger.info(now_time)
+
+
 async function getZgrbAppCookie() {
     try {
-        $.notification.post(cookieName, "", "3")
         const headers = JSON.stringify($.request.headers)
         const headers_json = JSON.parse(headers)
         const token = headers_json["Authorization"]
@@ -59,27 +61,37 @@ async function getZgrbAppCookie() {
 
             }
             // 将另一个日期字符串转换为 Date 对象
-            var time1 = new Date(zippo_time);
+            var time1 = new Date(zgrbTime);
             var time2 = new Date(now_time);
             // 比较两个日期的大小
             if (time2 > time1) {
-                $.data.write("zippoCk", "")
-                $.data.write("zippo_time", now_time)
+                $.data.write(ckname, "")
+                $.data.write(cktime, now_time)
             } else {
                 console.log("不做处理");
             }
-            let zippock = $.data.read("zippoCk")
-            console.log(zippock);
-            let arr = zippock.split("\n")
-            console.log(arr);
-            if (!arr.includes(token)) {
-                arr.push(token); // 如果没有重复，添加到数组中
-                $.data.write("zippoCk", arr.join("\n")); // 将数组重新组合成字符串并保存回 zgrbck
+            let zippoCk = $.data.read(ckname)
+            $.logger.info(zippoCk);
+            let arr = zippoCk.split("\n")
+            $.logger.info(arr);
+            //  开始添加token到boxjs
+            // ===========================下面是处理token===========================
+            let simpleCk = token.split(" "); 
+            ck = simpleCk[1]
+            // ===================================================================
+            if (!arr.includes(ck)) {
+                arr.push(ck); // 如果没有重复，添加到数组中
+                // if(arr.length>11){
+                //     arr.splice(0, 2);
+                //     //console.log("arr",arr); // 输出: [3, 4, 5]
+                //   }
+                $.data.write(ckname, arr.join("\n")); // 将数组重新组合成字符串并保存回 zgrbck
             } else {
-                console.log("字符串已存在，未添加。"); // 如果字符串已存在，输出提示
+                $.logger.info("字符串已存在，未添加。"); // 如果字符串已存在，输出提示
                 $.notification.post(cookieName, '', 'cookie已存在，未添加。')
             }
-            //zgrbck == "" ? $.data.write("zgrbck", token) : $.data.write("zgrbck", zgrbck + "\n" + token)
+
+
         }
     } catch (err) {
         $.logger.error(`获取中国人保Cookies出现异常，${err}`);
@@ -91,6 +103,7 @@ async function getZgrbAppCookie() {
         await getZgrbAppCookie();
     } else {
         $.logger.error(`没有进来`);
+        $.notification.post(cookieName, '', 'B没进来')
     }
     $.done();
 })();

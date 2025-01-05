@@ -32,6 +32,7 @@ let client_secret = ''
 var syncEnvs = [];
 var parts = envKeys.split('#');
 if (parts.length >= 7) { // 确保有足够的部分
+    // BoxJsKey:boxjs的环境变量名 qlEnv:青龙的环境变量名 qlRemark:青龙的备注
     var obj = { 'BoxJsKey': parts[0], 'qlEnv': parts[1], 'qlRemark': parts[2]};
     task_id = parts[3]; // 运行任务的id
     ql_url = parts[4]; // 青龙的url
