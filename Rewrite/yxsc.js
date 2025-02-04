@@ -1,7 +1,7 @@
 const cookieName = "yxsc抓包";
 const barkSwitch = "bark_switch";
 // const AppGetCookieRegex = /https:\/\/dict\.youdao\.com\/dictusertask\/cheese\/collectCoins/; 
-const AppGetCookieRegex = /https:\/\/www\.yuexiang365\.cn\/api\/V3\.8\/version/; 
+const AppGetCookieRegex = /https:\/\/www\.yuexiang365\.cn\/api\/V3\.8\/randomSearchText/; 
 
 const databaseSwitch = "database_switch";
 const $ = MagicJS(cookieName, "INFO");
