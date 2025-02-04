@@ -12,7 +12,7 @@ async function getZgrbAppCookie() {
     try {
         const body = $.request.body
         // 使用 URLSearchParams 来解析查询字符串
-        const params = new URLSearchParams(queryString);
+        const params = new URLSearchParams(body);
         // 提取 token 的值
         const token = params.get("token");
         console.log("提取的 token 值是：", token);
