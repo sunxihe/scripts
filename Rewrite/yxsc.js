@@ -58,7 +58,7 @@ async function getZgrbAppCookie() {
 
             }
             const yxscck = $.data.read("yxscck")
-            yxscck == "" ? $.data.write("yxscck", token) : $.data.write("yxscck", zgrbck + "\n" + token)
+            yxscck == "" ? $.data.write("yxscck", token) : $.data.write("yxscck", yxscck + "\n" + token)
         }
     } catch (err) {
         $.logger.error(`获取yxsc抓包Cookies出现异常，${err}`);
