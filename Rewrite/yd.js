@@ -9,7 +9,7 @@ const $ = MagicJS(cookieName, "INFO");
 
 async function getYDAppCookie() {
     try {
-        const respbody = $response.body
+        const respbody = $request.body
         // 使用正则表达式提取token
         const match = text.match(/token=([a-zA-Z0-9]+)/);
 
@@ -59,7 +59,7 @@ async function getYDAppCookie() {
             }
         }
     } catch (err) {
-        $.logger.error(`获取中国人保Cookies出现异常，${err}`);
+        $.logger.error(`获取亚朵Cookies出现异常，${err}`);
     }
 }
 
