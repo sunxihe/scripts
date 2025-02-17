@@ -11,7 +11,7 @@ async function getYDAppCookie() {
     try {
         const respbody = $request.body
         // 使用正则表达式提取token
-        const match = text.match(/token=([a-zA-Z0-9]+)/);
+        const match = respbody.match(/token=([a-zA-Z0-9]+)/);
 
         // 如果匹配到token，则返回token的值
         const token = match ? match[1] : null;
