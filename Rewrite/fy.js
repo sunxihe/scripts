@@ -1,6 +1,6 @@
 const cookieName = "富域抓包";
 const barkSwitch = "bark_switch";  //bark开关
-const AppGetCookieRegex = /^https?:\/\/evosapi\.fuyu\.club\/user\/myinfo/;
+const AppGetCookieRegex = /^https?:\/\/evosapi\.fuyu\.club\/user\/myInfo/;
 
 const databaseSwitch = "database_switch";
 const $ = MagicJS(cookieName, "INFO");
